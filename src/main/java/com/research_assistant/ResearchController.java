@@ -12,10 +12,14 @@ public class ResearchController {
 
     private final ResearchService researchService;
 
+      @GetMapping("/")
+      public ResponseEntity<String> greetings() {
+          String result = "Welcome to Research Ai Assistant";
+        return ResponseEntity.ok(result);
+    }
 
     @PostMapping("/process")
     public ResponseEntity<String> ProcessContent(@RequestBody ResearchRequest request) {
-        System.out.println("Controller reached");
         String result = researchService.processContent(request);
         return ResponseEntity.ok(result);
     }
